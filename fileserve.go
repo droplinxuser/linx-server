@@ -45,6 +45,10 @@ func fileServeHandler(c web.C, w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
+	
+	// add 6 months to expiry
+	metadata.Expiry = time.Now().Local().Add(time.Second*time.Duration(defaultExpiry))
+	storageBackend.PutMetadata(fileName, metadata)	// update metadata, with new expiry date
 
 	w.Header().Set("Content-Security-Policy", Config.fileContentSecurityPolicy)
 	w.Header().Set("Referrer-Policy", Config.fileReferrerPolicy)
