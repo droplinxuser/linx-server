@@ -325,6 +325,9 @@ func processUpload(upReq UploadRequest) (upload Upload, err error) {
 	} else {
 		fileExpiry = time.Now().Add(upReq.expiry)
 	}
+	
+	// override expiry: After 6 months
+	fileExpiry =  time.Now().Local().Add(time.Second*time.Duration(defaultExpiry))
 
 	if upReq.deleteKey == "" {
 		upReq.deleteKey = uniuri.NewLen(30)
