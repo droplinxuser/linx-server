@@ -7,6 +7,8 @@ import (
 	"github.com/dustin/go-humanize"
 )
 
+var defaultExpiry uint64 = 15768000
+
 var defaultExpiryList = []uint64{
 	60,
 	300,
