@@ -4,6 +4,7 @@
 
 {% block content %}
 <form id="reply" action='{{ sitepath }}upload' method='post'>
+    <input type="hidden" name="expires" id="expires" value="{{ defaultExpiry }}" />
     <div id="main" class="paste">
         <div id="info" class="info-flex">
             <div>
@@ -18,13 +19,7 @@
                     <input class="codebox" name="access_key" type="text" placeholder="password" />
                 </span>
 
-                <select id="expiry" name="expires">
-                    <option disabled>Expires:</option>
-                    {% for expiry in expirylist %}
-                    <option value="{{ expiry.Seconds }}" {% if forloop.Last %} selected{% endif %}>{{ expiry.Human }}
-                    </option>
-                    {% endfor %}
-                </select>
+                
                 <button type="submit">Paste</button>
             </div>
         </div>
