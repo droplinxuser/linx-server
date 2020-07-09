@@ -8,6 +8,7 @@
 <div id="fileupload">
     <form action="{{ sitepath }}upload" class="dropzone" id="dropzone" method="POST" enctype="multipart/form-data"
         data-maxsize="{{ maxsize }}" data-auth="{{ auth }}">
+        <input type="hidden" name="expires" id="expires" value="{{ defaultExpiry }}" />
         <div class="fallback">
             <input id="fileinput" name="file" type="file" /><br />
             <input id="submitbtn" type="submit" value="Upload">
@@ -25,14 +26,7 @@
             </span>
 
             <div id="expiry">
-                <label>File expiry:
-                    <select name="expires" id="expires">
-                        {% for expiry in expirylist %}
-                        <option value="{{ expiry.Seconds }}" {% if forloop.Last %} selected{% endif %}>
-                            {{ expiry.Human }}</option>
-                        {% endfor %}
-                    </select>
-                </label>
+                
             </div>
             <div id="access_key">
                 <span class="hint--top hint--bounce"
