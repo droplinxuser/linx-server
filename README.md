@@ -9,11 +9,20 @@ Self-hosted file/media sharing website.
 You can see what it looks like using the demo: [https://demo.linx-server.net/](https://demo.linx-server.net/)
 
 
+### Clients
+**Official**
+- CLI: **linx-client** - [Source](https://github.com/andreimarcu/linx-client)
+
+**Unofficial**
+- Android: **LinxShare** - [Source](https://github.com/iksteen/LinxShare/) | [Google Play](https://play.google.com/store/apps/details?id=org.thegraveyard.linxshare)
+- CLI: **golinx** - [Source](https://github.com/mutantmonkey/golinx)
+
+
 ### Features
 
 - Display common filetypes (image, video, audio, markdown, pdf)  
 - Display syntax-highlighted code with in-place editing
-- Documented API with keys if need to restrict uploads (can use [linx-client](https://github.com/andreimarcu/linx-client) for uploading through command-line)
+- Documented API with keys for restricting uploads
 - Torrent download of files using web seeding
 - File expiry, deletion key, file access key, and random filename options
 
@@ -45,7 +54,6 @@ services:
   linx-server:
     container_name: linx-server
     image: andreimarcu/linx-server
-    entrypoint: /usr/local/bin/linx-server 
     command: -config /data/linx-server.conf
     volumes:
       - /path/to/files:/data/files
@@ -60,8 +68,8 @@ Ideally, you would use a reverse proxy such as nginx or caddy to handle TLS cert
 
 #### Using a binary release
 
-1. Grab the latest binary from the [releases](https://github.com/andreimarcu/linx-server/releases)
-2. Run ```./linx-server```
+1. Grab the latest binary from the [releases](https://github.com/andreimarcu/linx-server/releases), then run ```go install```
+2. Run ```linx-server -config path/to/linx-server.conf```
 
   
 Usage
